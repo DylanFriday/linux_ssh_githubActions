@@ -1,0 +1,14 @@
+name: Test Script
+on: workflow_dispatch
+jobs:
+  run_test_job: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print out Hello to hello.txt
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          echo "HELLO WORLD" > hello.txt
